@@ -7,8 +7,12 @@ pipeline {
     stages {
         stage('Env Values') {
             steps {
-                sh 'docker login -u ${env.DOCKERHUB_COMMON_CREDS_USR} -p ${env.DOCKERHUB_COMMON_CREDS_PSW}'
-                echo 'Running ${env.BUILD_ID} in ${env.JAVA_HOME}'
+                script {
+                    withCredentials([usernamePassword(credentialsId: "${DOCKERHUB_COMMON_CREDS}", usernameVariable: 'DOCKERHUB_COMMON_CREDS_USR', passwordVariable: 'DOCKERHUB_COMMON_CREDS_PSW')]) {
+                        sh "docker login -u ${env.DOCKERHUB_COMMON_CREDS_USR} -p ${env.DOCKERHUB_COMMON_CREDS_PSW}"
+                    }
+                }
+                echo "Running ${env.BUILD_ID} in ${env.JAVA_HOME}"
             }
         }
 
