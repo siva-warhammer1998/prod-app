@@ -54,7 +54,6 @@ public class Controller {
     public ResponseEntity<Cars> updateCar(@PathVariable String id, @RequestBody Cars car) {
         Optional<Cars> carOptional = usedCarDao.findById(id);
         Cars carToUpdate = carOptional.orElseThrow(() -> new RuntimeException("Car not found with id: " + id));
-        
     carToUpdate.setName(car.getName());
     carToUpdate.setCompanyName(car.getCompanyName());
     carToUpdate.setYear(car.getYear());
