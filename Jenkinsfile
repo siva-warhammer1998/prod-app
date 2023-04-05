@@ -15,13 +15,20 @@ pipeline {
 
          stage('Build') {
             steps {
-                sh "docker build -t prod-app ."
+                script{
+                    sh "docker build -t prod-app ."        
+                }
                 echo 'Build complete......'
             }
 
          }
          stage('Push') {
             steps {
+                script{
+                    sh "docker tag prod-app siva1998/prodapp:latest"
+                    echo "tagged image"
+                    sh "docker push siva1998/prodapp:latest"
+                }
                 echo 'Pushed to dockerhub....'
             }
 
