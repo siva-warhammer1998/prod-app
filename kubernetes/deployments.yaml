@@ -18,3 +18,8 @@ spec:
         name: prod-app
         ports:
         - containerPort: 8080
+        resources:
+          requests:
+            memory: "6Gi"
+          limits:
+            memory: "8Gi"
