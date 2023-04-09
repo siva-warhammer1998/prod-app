@@ -9,6 +9,33 @@ pipeline {
                 }
             }
         }
+
+        stage('gcloud kubectl switch'){
+            steps{
+                scripts{
+                    sh('gcloud container clusters get-credentials prod-app-cluster --region northamerica-northeast1 --project final-project-a16d0')
+                }
+
+            }
+            sh('cd kubernetes')
+
+        }
+        stage('gcloud kubectl apply deployment'){
+            steps{
+                script{
+                    sh('kubectl apply -f deployments.yaml')
+            }
+        }
+            
+        }
+
+        stage('gcloud kubectl apply service'){
+                steps{
+                    script{
+                        sh('kubectl apply -f services.yaml')
+                    }
+                }
+            }
     }
 }
 
