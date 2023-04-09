@@ -12,7 +12,7 @@ pipeline {
 
         stage('gcloud kubectl switch'){
             steps{
-                scripts{
+                script{
                     sh('gcloud container clusters get-credentials prod-app-cluster --region northamerica-northeast1 --project final-project-a16d0')
                 }
             sh('cd kubernetes')
