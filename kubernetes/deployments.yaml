@@ -14,7 +14,7 @@ spec:
         app: prod-app
     spec:
       containers:
-      - image: siva1998/prod-app:latest
+      - image: siva1998/prodapp:latest
         name: prod-app
         ports:
         - containerPort: 8080
