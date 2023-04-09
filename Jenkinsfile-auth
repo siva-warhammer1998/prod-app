@@ -1,0 +1,14 @@
+pipeline {
+    agent any 
+
+    stages {
+        stage('gcloud auth login') {
+            steps {
+                withCredentials([file(credentialsId: 'key-sa', variable: 'GC_KEY')]) {
+                        sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
+                }
+            }
+        }
+    }
+}
+
