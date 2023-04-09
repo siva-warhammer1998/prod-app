@@ -21,7 +21,7 @@ pipeline {
         stage('gcloud kubectl apply deployment'){
             steps{
                 script{
-                    sh('kubectl apply -f deployments.yaml')
+                    sh('kubectl apply -f kubernetes/deployments.yaml')
             }
         }
             
@@ -30,7 +30,7 @@ pipeline {
         stage('gcloud kubectl apply service'){
                 steps{
                     script{
-                        sh('kubectl apply -f services.yaml')
+                        sh('kubectl apply -f kubernetes/deployments.yaml')
                     }
                 }
             }
